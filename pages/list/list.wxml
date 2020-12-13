@@ -1,0 +1,66 @@
+<!--pages/list/list.wxml-->
+<scroll-view scroll-x class="bg-white nav">
+    <view class='flex text-center'>
+        <view class="cu-item flex-start {{item.id==TabCur?'text-yellow cur':''}}" wx:for="{{tabList}}" catchtap="tabSelect" >
+         {{item.name}}
+        </view>
+    </view>
+</scroll-view>
+
+
+<view class="cu-card padding-lr margin-top" catchtap="toDetail(order.id)" wx:for="{{list}}">
+    <view class="text-yellow  text-sm  padding-bottom-xs"><text class="cuIcon-timefill "></text>{{order.created_on_utc}}</view>
+    
+    <view class=" bg-white pg-radius  shadow shadow-warp">
+        <view class="cu-bar  solid-bottom ">
+            <view class="action">
+                <text class="cuIcon-title text-yellow "></text>                
+                <text class="{{order.order_status_code==ORDER_STATUS_PENDING ? 'text-red':'text-black'}} text-bold" >
+                    订单ID:{{order.id}} 
+                    <!-- ( {{order.payment_status}} ) -->
+                </text>      		                 
+            </view>
+            <view class="action">
+                <text class="text-yellow text-bold" wx:if="{{order.order_status_code==ORDER_STATUS_PENDING}}">（30分钟内有效）去支付</text>
+                
+                <view v-if="order.order_status_code==ORDER_STATUS_PROCESSING">
+                    <image class="cu-avatar bg-white sm margin-right-xs" src="/static/images/icon/qr.png" ></image>
+                    <text class="text-yellow text-bold" > 待使用</text>
+                </view>
+                
+                <text class="text-yellow text-bold" wx:if="order.order_status_code==ORDER_STATUS_COMPLETE">{{order.order_status}}</text>
+                <text class="text-yellow text-bold" wx:if="order.order_status_code==ORDER_STATUS_CANCEL">{{order.payment_status}}</text>
+                <view class="pg-arrow-sm"></view>
+            </view>
+        </view>
+        <view class="cu-list menu ">				
+            <view class="cu-item margin-tb-sm " style="align-items: flex-start;"
+                wx:for="{{ order.order_items}}" wx:item-index="j">
+                <view class="action">
+                    <image src='{{item.product.images[0]}}' 
+                        class="cu-avatar radius lg  bg-gray margin-right-sm " 
+                        style="width:60px;height:60px"
+                        mode="aspectFill"
+                        ></image>
+                </view>
+                <view class="content ">
+                    <view class="text-black  text">{{item.product.name}}</view>
+                    <view class="text-gray  text-sm">数量：{{item.quantity}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="cu-bar  solid-bottom ">
+            <view class="action"></view>
+            <view class="action">						
+                <text class="text-gray  text-sm margin-right-xs">合计</text>						
+                <text class=" text-xl text-black text-bold text-price"></text>
+                <text class=" text-xl text-black text-bold">{{order.order_total}}</text>
+            </view>
+        </view>					
+    </view>
+</view>
+
+<view class=" padding-xs flex  align-center margin-top justify-center">
+    <text class="text-center  text-gray">{{ isMore?"加载中..":"暂无更多订单"}}</text>		
+</view>
+<view class="pg-space-xxl"></view>

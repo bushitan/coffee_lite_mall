@@ -1,0 +1,28 @@
+{
+    "pages": [
+        "pages/route/route",
+        "pages/brand/brand",
+        "pages/menu/menu",
+        "pages/order/order",
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/my/my",
+        "pages/pay/pay",
+        "pages/list/list",
+        "pages/detail/detail",
+        "pages/item/item"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "Weixin",
+        "navigationBarTextStyle": "black"
+    },
+    "usingComponents": {},
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
+    },
+    "sitemapLocation": "sitemap.json"
+}

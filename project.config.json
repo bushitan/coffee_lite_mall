@@ -1,0 +1,120 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"enhance": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"nodeModules": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.14.1",
+	"appid": "wx12dbd7b90d1260a8",
+	"projectname": "%E5%B0%8F%E6%9D%AF%E5%AD%90%E7%B2%BE%E9%80%89%E5%95%86%E5%9F%8E",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "pages/menu/menu shopID=97",
+					"pathName": "pages/menu/menu",
+					"query": "shopID=97",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/order/order",
+					"pathName": "pages/order/order",
+					"query": "shopID=97",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/pay/pay",
+					"pathName": "pages/pay/pay",
+					"query": "shopID=97",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/my/my",
+					"pathName": "pages/my/my",
+					"query": "shopID=97",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/list/list",
+					"pathName": "pages/list/list",
+					"query": "shopID=97",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "pages/detail/detail",
+					"pathName": "pages/detail/detail",
+					"query": "orderId=3100",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/item/item",
+					"pathName": "pages/item/item",
+					"query": "itemId=2444",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/brand/brand",
+					"pathName": "pages/brand/brand",
+					"query": "shopID=97",
+					"scene": null
+				}
+			]
+		}
+	}
+}

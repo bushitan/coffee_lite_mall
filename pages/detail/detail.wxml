@@ -1,0 +1,218 @@
+<!--pages/detail/detail.wxml-->
+<view class="text-xl text-bold flex justify-between align-center padding">
+           <view>
+				<text class="cuIcon-titles text-yellow"></text>
+			   <text >订单ID：{{order.id}}</text>
+                <!-- <text v-if="order.customertaketype == SHOP_TAKE_WM">订单ID：{{order.id}}</text> -->
+                
+              <!--  <text  v-if="order.customertaketype == SHOP_TAKE_WM">（外卖）</text>
+                <text  v-if="order.customertaketype == SHOP_TAKE_ZQ">（到店自取）</text>
+                <text  v-if="order.customertaketype == SHOP_TAKE_TS">（堂食）</text> -->
+            </view>				
+			<button v-if="order.payment_status_code == PAYMENT_STATUS_PENDING || order.payment_status_code == PAYMENT_STATUS_AUTHORIZED"
+				class="cu-btn round bg-yellow text-white" 
+				catchtap="clickPay">支付订单</button>
+		</view>
+		<!-- <view v-if="order.order_status_code == ORDER_STATUS_PROCESSING">
+			<view class="flex justify-center ">
+				<tki-qrcode
+				ref="qrcode"
+				cid="cid"
+				:val="order.guid"
+				size="400"
+				:loadMake="true"
+				@result="qrR" />
+			</view>
+			<view class="text-center text-bold text-xl padding">店员扫码核销</view>
+		</view> -->
+
+        <view class="cu-card padding-lr ">
+            <view class=" bg-white pg-radius  shadow shadow-warp">
+                <view class="cu-bar  solid-bottom ">
+                    <view class="action">
+                        <text class="cuIcon-title text-yellow "></text>                
+                        <text class="text-black text-sm">订单状态</text>      
+                    </view>
+                    <view class="action">                    
+                        <view class=" text-sm">{{order.order_status}} </view>
+                    </view>
+                </view>
+                <view class="cu-bar  solid-bottom ">
+                    <view class="action">
+                        <text class="cuIcon-title text-yellow "></text>                
+                        <text class="text-black text-sm">支付状态</text>      
+                    </view>
+                    <view class="action">                    
+                        <view class=" text-sm">{{order.payment_status}} </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+		<view class="cu-card padding-lr margin-top">
+			<view class=" bg-white pg-radius  shadow shadow-warp">
+				<view class="cu-bar  solid-bottom ">
+					<view class="action">
+						<text class="cuIcon-title text-yellow "></text>
+						<text class=" text-black  text-sm">商品</text>
+					</view>
+					<!-- <view class="action">                
+						<text class="text-black text-sm">{{order.ship_address.addr_detail}}</text>      
+					</view> -->
+				</view>
+				<view class="cu-list menu ">
+					<!-- <view class="cu-item " >
+						<view class="action text-gray text-sm">下单门店</view>
+						<view class="action text-sm">{{order.store_name}}</view>
+					</view> -->
+					<view class="cu-item margin-tb-sm" style="align-items: flex-start;" v-for="(item,key) in order.order_items" v:bind-key="key">
+						<view class="action">
+							<image :src='item.product.images[0]' 
+								class="cu-avatar radius lg  bg-gray margin-right-sm " 
+								style="width:60px;height:60px"
+								mode="aspectFill"
+								></image>
+						</view>
+						<view class="content">
+							<view class="text-black   text">{{item.product.name}}</view>
+							<view class="text-gray   text-sm">{{item.attr_desc}}</view>
+							<view class="text-gray   text-sm">数量：{{item.quantity}}</view>
+							<view class="text-gray   text-sm">
+								单价：<text class="text-price"></text>{{item.unit_price_exclTax}}
+							</view>
+							<!-- <view class="text-gray  text-sm" v-if="item.product.wmCost">
+                                包装费：<text class="text-price"></text>{{item.product.wmCost}} 
+                            </view> -->
+							
+						</view>
+						<view class="action text-red ">
+							<text class="text-price"></text>{{item.price_excl_tax}}
+						</view>
+					</view>			
+				</view>
+				
+				<view class="cu-list menu ">					
+					<view class="cu-item " >
+						<view class="action text-gray text-sm">商品费用</view>
+						<view class="action text-red">
+							<template v-if="order.order_discount > 0">
+								<text class="text-gray  text-sm ">已优惠</text>						
+								<text class="text-price text-sm text-red "></text>
+								<text class="  text-sm text-red margin-right">{{order.order_discount}}</text>
+							</template>
+							
+							<text class="text-price"></text>{{order.order_with_discount || ""}}
+						</view>
+					</view>
+					<!-- <view class="cu-item "  v-if="order.customertaketype != SHOP_TAKE_TS">
+						<view class="action text-gray text-sm">包装费</view>
+						<view class="action text-red">
+							<text class="text-price"></text>{{order.wm_cost || 0 }}
+						</view>
+					</view> -->
+					<view class="cu-item "  wx:if="order.customertaketype == SHOP_TAKE_WM" >
+						<view class="action text-gray text-sm">配送费</view>
+						<view class="action text-red">
+							<template v-if="order.ship_discount > 0">
+								<text class="text-gray  text-sm ">已优惠</text>						
+								<text class="text-price text-sm text-red "></text>
+								<text class="  text-sm text-red margin-right">{{order.ship_discount }}</text>
+							</template>
+							<text class="text-price"></text>{{order.customer_take_ship_fee }}
+						</view>
+					</view>
+				</view>
+				<view class="cu-bar  solid-bottom ">
+					<view class="action"></view>
+					<view class="action">						
+						<!-- <text class="text-gray  text-sm ">已优惠</text>						
+						<text class="text-price text-sm text-yellow "></text>
+						<text class="  text-sm text-yellow margin-right">{{order.order_discount}}</text> -->
+					
+						<template v-if="order.order_discount_total > 0">
+							<text class="text-gray  text-sm ">已优惠</text>
+							<text class="text-price text-sm text-red "></text>
+							<text class="  text-sm text-red margin-right">{{order.order_discount_total  || ""}}</text>
+						</template>
+						
+						<text class="text-gray  text-sm margin-right-xs">合计</text>						
+						<text class=" text-xl text-red text-bold text-price "></text>
+						<text class=" text-xl text-red text-bold">{{order.order_total  || ""}}</text>
+					</view>
+				</view>					
+			</view>
+		</view>
+		
+		<view class="cu-card padding-lr margin-top">
+			<view class=" bg-white pg-radius  shadow shadow-warp">
+				<view class="cu-bar  solid-bottom ">
+					<view class="action">
+						<text class="cuIcon-title text-yellow "></text>                
+						<text class="text-black text-sm">备注信息</text>      
+					</view>
+					<view class="action">
+					</view>
+				</view>				
+				<view class="cu-list menu ">					
+					<view class="cu-item " wx:for="{{order.order_notes}}" wx:key wx:if="item.display_to_customer == true">
+						<view class="content">
+							<text class="text-gray text-sm">{{item.Note}}</text>
+						</view>
+						<view class="action ">
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+
+        
+		<view class="cu-card padding-lr margin-top">
+			<view class=" bg-white pg-radius  shadow shadow-warp">
+				<view class="cu-bar  solid-bottom ">
+					<view class="action">
+						<text class="cuIcon-title text-yellow "></text>                
+						<text class="text-black text-sm">订单信息</text>      
+					</view>
+				</view>
+				<view class="cu-list menu ">
+					<!-- <view class="cu-item ">
+						<view class="content">
+							<text class="text-gray text-sm">取单码</text>
+						</view>
+						<view class="action">
+							<view class="text-black text-sm">{{order.id}}</view>
+						</view>
+					</view> -->
+					<view class="cu-item ">
+						<view class="content">
+							<text class="text-gray text-sm">下单时间</text>
+						</view>
+						<view class="action">
+							<view class="text-black text-sm">{{order.created_on_utc}}</view>
+						</view>
+					</view>
+					<view class="cu-item ">
+						<view class="content">
+							<text class="text-gray text-sm">支付方式</text>
+						</view>
+						<view class="action ">
+							<view class="text-black text-sm">微信支付</view>
+						</view>
+					</view>
+				</view>				
+			</view>
+		</view>
+		
+		<view class=" flex  justify-center margin-top">
+						
+			<button wx:if="order.order_status_code == ORDER_STATUS_PROCESSING && order.payment_status_code != PAYMENT_STATUS_REFUND_APPLY  "
+					class="cu-btn round line-red" 
+					catchtap="clickCancle">退款申请</button>	
+		</view>
+		
+		
+		<view class=" padding-xs flex  align-center margin-top justify-center">
+			<text class="text-center  text-gray text-sm">{{order?"信息加载完毕":"信息加载中"}}</text>		
+		</view>
+		<view class="pg-space-xxl"></view>		
+		

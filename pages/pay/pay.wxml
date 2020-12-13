@@ -1,0 +1,6 @@
+<!--pages/pay/pay.wxml-->
+<view class="flex justify-center align-center flex-direction" style="height:80vh">
+    <image class="logo" src="{{config.brand.logo}}" mode="widthFix"></image>
+    <view class="text-xl ">支付中</view>
+    <button class="cu-btn radius bg-gray margin-top">返回</button>
+</view>

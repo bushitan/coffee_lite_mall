@@ -1,0 +1,53 @@
+<!--pages/pay/pay.wxml-->
+
+<view class="cu-bar padding-tb bg-white">
+    <view class="action">
+        <image class="cu-avatar xl round bg-white margin-right-sm"  src="{{ userInfo.WxAvatarUrl || '/images/user-unlogin.png' }}" ></image>
+        <view class=" flex flex-start flex-direction ">
+            <view>
+                <text class="text-bold text-lg" wx:if="{{userInfo.WxNickName}}">{{userInfo.WxNickName }}</text>
+            </view>
+            <view class="text-gray" >(商户ID：{{login.sn}})</view>
+        </view>
+    </view>
+    
+    <view class="action">
+        <button class="cu-btn radius " open-type="getUserInfo" bindgetuserinfo="productSetUserInfo" >{{userInfo.WxNickName?"更新信息":"登录"}}</button>
+    </view>
+</view>
+<view class=" padding-lr margin-top ">
+    <view class="  shadow shadow-warp bg-white">				
+        <view class="cu-bar  solid-bottom " catcatch="toOrder" >
+            <view class="action">
+                <text class="cuIcon-title text-yellow text-sm"></text> 
+                <text class="text-sm">我的订单</text> 	
+            </view>
+            <view class="action ">
+                <text class="text-grey  text-sm">所有订单</text>
+                <view class="pg-arrow"></view>
+            </view>
+        </view>		
+        <!-- <view class="cu-bar  solid-bottom " catcatch="toAddress()" >
+            <view class="action">
+                <text class="cuIcon-title text-yellow text-sm"></text> 
+                <text class="text-sm">我的地址</text> 	
+            </view>
+            <view class="action ">						
+                <view class="pg-arrow"></view>
+            </view>
+        </view> -->
+    </view>
+</view>
+
+<view class=" flex justify-center margin-top">
+    <button class=" cu-btn round  text-gray text-sm"  type="" open-type="contact">联系客服</button>
+</view>
+
+<view class=" padding-xs flex align-center margin-top-sm">
+    <view class="flex-sub text-center">
+        <view class=" text-df ">
+            <text class="text-gray text-sm">{{config.footer.text}}</text>
+        </view>           
+    </view>
+</view>
+<view class="pg-space-xxl"></view>

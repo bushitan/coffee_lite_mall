@@ -1,0 +1,5 @@
+/* pages/pay/pay.wxss */
+
+.logo{
+    width: 150px;
+}

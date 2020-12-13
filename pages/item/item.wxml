@@ -1,0 +1,138 @@
+<!--pages/good/good.wxml-->
+
+
+
+<!-- 详情选项 -->
+<view class="cu-bar bg-white padding-lr" catchtap="closeShow">
+    <view class="cuIcon-titles text-black text-bold">{{currentItem.name}}</view>
+</view>
+<scroll-view scroll-y scroll-with-animation style="width: 100%;height: calc(100vh - 50px - 100px - 30px - {{CustomBar}}px)"> 
+    <image src='{{currentItem.imgs[0].src}}' class="block " style="width:100%; height:150px" mode="aspectFit"></image>
+    <view class="padding-lr margin-top">
+        <view class="flex flex-start">
+            <text class="bg-gray radius  text-xs margin-right-sm padding-xs"
+                wx:for="{{currentItem.tags}}" wx:for-item="tag" wx:for-index="tagIndex">{{tag}}</text>	
+        </view>
+        <view class="radius text-sm text-left margin-top-sm">{{currentItem.shortDescription || ""}}</view>			
+    </view>
+    <view class="padding-lr margin-top " wx:for="{{currentItem.attributes}}" wx:for-item="att"  wx:for-index="attIndex">
+        <view class=" text-left margin-top-sm text-gray text-sm">{{att.productAttributeName}}</view>
+        <view class="flex flex-start flex-wrap margin-top-sm">	
+            <view class="text-sm text-center margin-right-sm margin-bottom-sm" wx:for="{{ att.attributeValues }}" wx:for-item="value" wx:for-index="valueIndex">
+                <button class="cu-btn radius {{att.attributeValues[valueIndex].isSelect?'bg-yellow text-white' :'line-gray'}}"                     
+                catchtap="clickAtt"
+                data-attindex="{{attIndex}}"
+                data-valueindex="{{valueIndex}}"
+                >{{value.name}}
+                </button>		
+            </view>
+        </view>
+    </view>
+    <view class="pg-space-xxl"></view>
+</scroll-view>
+
+<view class="" style="position: fixed ;bottom: 0; left: 0;right: 0; background-color: rgba(255,255,255,0.8);" >
+    <view class="padding-lr padding-tb-sm solid-bottom mask"  hidden="{{order[key]?order[key].attDes == ''? true:false : true}}"  >
+        <view class="flex flex-start text-sm align-center">		
+            <text class="text-gray ">已选规格：</text>{{order[key]?  order[key].attDes:""}}						
+        </view>					
+    </view>
+    
+    <view class="padding-top padding-lr mask">
+        <view class="flex justify-between align-center text-xxl">						
+            <view class="text-red ">
+                <text class="text-price"></text>{{ currentItem.price}}	
+                <!-- {{currentItem.price}} -->
+            </view>				
+            <view class="flex justify-between align-center">                        
+                <image src="{{config.icon.cut}}"  class="cu-avatar sm " catchtap="cutItem" 	hidden="{{order[key]? false : true}}" style=" background-color: rgba(255,255,255,0);"></image>								
+                <text class="padding-lr-sm">{{ order[key].Quantity || 0 }}</text>	
+                <image src="{{config.icon.add}}"  class="cu-avatar sm " catchtap="addItem" style=" background-color: rgba(255,255,255,0);"></image>
+            </view>						
+        </view>
+        <view class="">
+            <view class="cu-bar  tabbar border shop">
+                
+                <view class="action" catchtap="toIndex">
+                    <view class=" cuIcon-shop"></view> 店铺
+                </view>
+                <button class="action " open-type="contact" style=" background-color: rgba(255,255,255,0);">
+                    <view class="cuIcon-service text-green">
+                    </view>
+                    客服
+                </button>
+                <view class="action" catchtap="openBill"> 
+                    <view class="cuIcon-cart">
+                        <view class="cu-tag badge">{{total.totalPrice || 0}}</view>
+                    </view>
+                    购物车
+                </view>
+                <view class="btn-group flex justify-end">
+                    <button class="cu-btn bg-red round shadow-blur"  disabled="{{total.totalQuantity>0?false :true}}"	catchtap="toPay">立即订购</button>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+<!-- 遮罩 -->
+<view class="cu-modal padding-tb-xl {{ showOrder?'show':''}}" >
+    <view class="cu-dialog" style=" position: relative;">
+
+        <view class="cu-bar bg-white justify-between">
+            <view class="action">
+                <button class="cu-btn bg-red round " catchtap="clearOrder">清空</button>
+            </view>
+            <view class="content text-bold">当前订单</view>
+            <view class="action" catchtap="closeShow">
+                <text class="cuIcon-close text-red"></text>
+            </view>
+        </view>
+
+        <view class="padding-lr padding-tb-sm text-left bg-white">
+            <text class="line-red text-bold">{{shopDiscount}}</text>
+        </view>
+        <view class="cu-list menu bg-white">
+            <view class="cu-item margin-tb-sm align-start" style="align-items:flex-start" wx:for="{{order}}" wx:for-item="item" wx:for-index="key">
+                <view class="action">
+                    <image src='{{item.cover}}' class="cu-avatar radius xl  bg-gray margin-right-sm " mode="aspectFill"></image>
+                </view>
+                <view class="content ">
+                    <view class="text-black text-left">{{item.name}}</view>
+                    <view class="text-gray  text-sm text-left">{{item.attDes}}</view>
+                    <view class="flex justify-between">
+                        <view class="text-gray ">
+                            <text class="text-price"></text>
+                            <text class="text-red">{{item.total}}</text>
+                        </view>
+                        <view class="text-gray  flex justify-between align-center">
+                            <image src="{{config.icon.cut}}"  class="cu-avatar sm bg-white" 
+                                catchtap="cutOrder"
+                                data-key="{{key}}"
+                                data-categoryindex="{{item.categoryIndex}}"
+                                data-itemindex="{{item.itemIndex}}"
+                                data-attindex="{{item.attIndex}}"
+                                data-valueindex="{{item.valueIndex}}"
+                            ></image>
+                            <text class="padding-lr-xs ">{{ order[key].Quantity || 0 }}</text>								
+                            <image src="{{config.icon.add}}"  class="cu-avatar sm bg-white" 
+                                catchtap="addOrder"
+                                data-key="{{key}}"
+                                data-categoryindex="{{item.categoryIndex}}"
+                                data-itemindex="{{item.itemIndex}}"
+                                data-attindex="{{item.attIndex}}"
+                                data-valueindex="{{item.valueIndex}}"
+                            ></image>                        
+                        </view>
+                    </view>
+                </view>
+            </view>					
+        </view>                
+        <view class="cu-bar bg-white justify-end">            
+            <view class="action">
+                <button class="cu-btn bg-yellow text-white round margin-left" catchtap="closeShow">确定</button>
+            </view>
+        </view>
+    </view>
+</view>
+
