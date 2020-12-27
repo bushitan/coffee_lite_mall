@@ -1,0 +1,45 @@
+<!--pages/coupon/coupon.wxml-->
+
+
+<view class="padding-top-xl  text-yellow padding-lr" >
+    <text class="cuIcon-titles  margin-right-xs"></text> 
+    <text class="">我的优惠券</text>
+</view>    
+<view class=" padding-lr " wx:for="{{couponList}}">
+    <view class="shadow shadow-warp ">
+        <!-- <view>
+            <text class="cuIcon-title text-yellow">            
+            </text>            
+        </view> -->
+        <view class="cu-bar   margin-top-sm bg-white " >
+            <view class="action padding-left text-gray flex-direction align-start">
+                <view class=" text-bold">{{item.coupon_name}}</view>
+                <view>满{{item.normal_coupon_information.transaction_minimum/100}}元可使用</view>
+            </view>
+            <view class="action basis-xs">
+                <text class="text-red text-bold text-xxl">{{item.normal_coupon_information.coupon_amount/100}}</text>
+                <text class="text-sm">元</text>
+            </view>        
+        </view>
+        <view class="cu-bar   bg-white solid-top" >
+            <view class="action padding-left text-gray ">
+                <text class="text-gray text-sm">{{item.available_begin_time}}至{{item.available_end_time}}</text>
+            </view>
+            <!-- <view class="action">
+                <button class="cu-btn round bg-yellow text-white text-yellow" catchtap="toStore" 
+            data-shop_ids="{{item.shop_ids}}">去使用</button>
+            </view> -->
+        </view>
+    </view>
+</view>
+<view class="cu-load text-gray {{isLoad?'loading':'over'}} text-sm"></view>
+
+
+<view ></view>
+<view class="pg-space-xl"></view>
+
+
+
+
+
+

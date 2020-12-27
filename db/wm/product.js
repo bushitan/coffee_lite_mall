@@ -351,6 +351,33 @@ class dbSystem extends dbFather {
     }
 
 
+    /** 
+     * @mehtod 根据商户号查用户的券
+     * @param
+         openid
+        Wxappid
+        stock_id
+        status
+        creator_mchid
+        sender_mchid
+        available_mchid
+        offset
+        limit
+        shopId            
+    */
+    productGetCouponList(data) {
+        return new Promise((resolve, reject) => {
+            this.base({
+                url: this.HOST_URL + "api/query/couponsbymerchants/",
+                data: data,
+                method: "POST",
+            }).then(res => {
+                // console.log(res)
+                resolve(res)
+            }).catch(res => reject(res))
+        })
+    }
+
 }
 
 

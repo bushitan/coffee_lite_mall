@@ -1089,11 +1089,12 @@ button.icon.lg {
 }
 
 .cu-load.over::before {
-	content: "\e64a";
+	/* content: "\e64a"; */
 }
 
 .cu-load.over::after {
-	content: "没有更多了";
+	/* content: "没有更多了"; */
+	content: "到底了";
 }
 
 .cu-load.erro::before {

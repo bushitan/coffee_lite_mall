@@ -10,6 +10,10 @@
     <button class="cu-btn  radius margin-right" catchtap="toDetail">订单详情</button>
     <button class="cu-btn  radius margin-right" catchtap="toItem">产品页面</button>
     <button class="cu-btn  radius margin-right" catchtap="toBrand">品牌专栏页面</button>
+    <button class="cu-btn  radius margin-right" catchtap="toCoupon">我的代金券</button>
+    <button class="cu-btn  radius margin-right" catchtap="">充值卡</button>
+    <button class="cu-btn  radius margin-right" catchtap="">扫码支付</button>
+    <!-- <button class="cu-btn  radius margin-right" catchtap="">充值卡</button> -->
     
 </view>
 
