@@ -113,6 +113,20 @@
 					"pathName": "pages/brand/brand",
 					"query": "shopID=97",
 					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/test/test",
+					"pathName": "pages/test/test",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 9,
+					"name": "pages/test/test",
+					"pathName": "pages/test/test",
+					"query": "paramA=1&paramB=ab21",
+					"scene": null
 				}
 			]
 		}

@@ -24,8 +24,15 @@ App({
 
         // configBehaviors.initConfig()
         // TODO 获取config配置
-
         this.config = wx.getStorageSync('config')
+
+        this.configBase = wx.getStorageSync('config') 
+
+        // TODO 获取主题theme 配置
+        // this.theme = {
+        //     textMain: 'text-red',
+        //     bgMain: 'bg-green'
+        // }
     },
 
     
@@ -52,23 +59,38 @@ App({
 
         }
     },
+    
+    /**
+     * TODO
+     * 1、背景，主题 
+     * 2、前景卡片
+     * 3、卡片主要颜色、背景
+     * 4、说明文字
+     */
+    configTheme:{
+        textMain: 'text-red',
+        bgMain: 'bg-green'
+    },
 
-    config: {},
-        // init:{
-        //     page:"", //第一个进的页面
-        //     shopID:"", //展示的门店号
-        // },
-        // color:{
-        //     text:"", //文字颜色
-        //     bg:"", //背景颜色
-        // },  
-        // window:{
-        //     "navigationBarBackgroundColor": "#efaf30",
-        //     "navigationBarTextStyle": "#ffffff",
-        //     "navigationBarTitleText": "小杯子配置",
-        //     "backgroundColor": "#ffffff",
-        //     "backgroundTextStyle": "light"
-        // }
+    // 基础配置文件
+    configBase: {
+        init: {
+            page: "", //第一个进的页面
+            shopID: "", //展示的门店号
+        },
+        color: {
+            text: "", //文字颜色
+            bg: "", //背景颜色
+        },
+        window: {
+            "navigationBarBackgroundColor": "#efaf30",
+            "navigationBarTextStyle": "#ffffff",
+            "navigationBarTitleText": "小杯子配置",
+            "backgroundColor": "#ffffff",
+            "backgroundTextStyle": "light"
+        }
+    },
+        
     
     
 })

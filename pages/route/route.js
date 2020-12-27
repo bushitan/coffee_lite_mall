@@ -85,6 +85,8 @@ Page({
                 text: "", //文字颜色
                 bg: "", //背景颜色
                 page: "",
+                textMain: 'text-red',
+                bgMain: 'bg-green'
             },
             // 窗口配置
             window: {
