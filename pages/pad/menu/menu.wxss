@@ -49,6 +49,24 @@
 	font-size: 60rpx;
 }
 
+.cu-btn{
+	height: 32rpx;
+    padding: 0 15rpx;
+}
+.cu-btn.sm {
+	padding: 0 10rpx;
+	font-size: 10rpx;
+	height: 24rpx;
+}
+
+.cu-btn.lg {
+	padding: 0 20rpx;
+	font-size: 16rpx;
+	height: 40rpx;
+}
+
+
+
 
 
 
