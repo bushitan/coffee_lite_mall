@@ -127,6 +127,13 @@
 					"pathName": "pages/test/test",
 					"query": "paramA=1&paramB=ab21",
 					"scene": null
+				},
+				{
+					"id": 10,
+					"name": "pages/pad/menu/menu Ipad 点单",
+					"pathName": "pages/pad/menu/menu",
+					"query": "shopID=97",
+					"scene": null
 				}
 			]
 		}

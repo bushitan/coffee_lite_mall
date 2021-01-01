@@ -2,6 +2,12 @@
 var db = require('db/db.js')
 var utils = require('utils/util.js')
 var configBehaviors = require('behaviors/config.js')
+
+import { promisifyAll, promisify } from 'lib/miniprogram-api-promise/index.js'; // wx API化  promisify all wx's api
+const wxp = {}
+promisifyAll(wx, wxp) 
+wx = wxp
+
 App({
     db: db,
     utils: utils,
@@ -33,6 +39,12 @@ App({
         //     textMain: 'text-red',
         //     bgMain: 'bg-green'
         // }
+
+        wx.getSystemInfo().then( res =>{
+            console.log(res.fontSizeSetting)
+        })
+        // wx.getSystemInfo({ success(res) { console.log(res) } })
+        
     },
 
     

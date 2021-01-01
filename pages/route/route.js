@@ -27,7 +27,7 @@ Page({
         
         var res = await app.db.product.login()
         // this.clickTo()
-        this.toBrand()
+        // this.toBrand()
     },
     //  默认和点击跳转
     clickTo() { // debugger
@@ -44,6 +44,10 @@ Page({
     toDetail() { wx.navigateTo({ url: '/pages/detail/detail?orderId=3150', }) }, // 订单列表
     toItem() { wx.navigateTo({ url: '/pages/item/item?itemId=2444&shopID=87', }) }, // 订单列表
     toBrand() { wx.navigateTo({ url: '/pages/brand/brand?shopID=97', }) }, // 品牌专栏
+
+    // toPad() { wx.navigateTo({ url: '/pages/menu_pad/menu_pad?shopID=97', }) }, // 品牌专栏
+    toPad() { wx.navigateTo({ url: '/pages/pad/menu/menu?shopID=97', }) }, // 品牌专栏
+
     /**
      * @method 获取配置表
      * 除开switch页面，其他页面，均使用公共的配置表，来完成风格的转化

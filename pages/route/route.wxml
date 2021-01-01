@@ -13,6 +13,7 @@
     <button class="cu-btn  radius margin-right" catchtap="toCoupon">我的代金券</button>
     <button class="cu-btn  radius margin-right" catchtap="">充值卡</button>
     <button class="cu-btn  radius margin-right" catchtap="">扫码支付</button>
+    <button class="cu-btn  radius margin-right" catchtap="toPad">Ipad点单</button>
     <!-- <button class="cu-btn  radius margin-right" catchtap="">充值卡</button> -->
     
 </view>

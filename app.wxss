@@ -5,10 +5,10 @@
 page {
     /* height: 100%; */
     width: 100%;
-    background-color: #ffffff;    
+    /* background-color: #ffffff;     */
     /* background-color: var(--ghostWhite); */
     /* background: #FAFAFA; */
-    font-size: 11pt;
+    /* font-size: 11pt; */
     font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
 }
 
