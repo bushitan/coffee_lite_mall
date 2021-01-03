@@ -2,7 +2,8 @@
 @import 'static/css/main.wxss';
 @import 'static/css/icon.wxss';
 
-@import '/static/css/pad_color.wxss';
+@import '/wxss/pad_color.wxss';
+@import '/wxss/theme.wxss';
 page {
     /* height: 100%; */
     width: 100%;
@@ -56,4 +57,40 @@ page {
 .pg-mirror-vertical {
     transform: rotateZ(180deg);   /* 垂直镜像翻转 */
 	transition-duration: 0.3s;
+}
+
+.pg-ellipsis-1,.pg-ellipsis-2{    
+  /* overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical; 
+-webkit-line-clamp:1; */
+    
+
+}
+.pg-ellipsis-1{ 
+ /* text-overflow:ellipsis; white-space:nowrap; overflow:hidden; 
+ width:100% */
+    /* white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all; */
+  /* line-clamp: 1; */
+overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+ }
+
+.pg-ellipsis-2{ 
+     text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+
 }

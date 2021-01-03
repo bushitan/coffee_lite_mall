@@ -6,6 +6,15 @@ module.exports = Behavior({
         tabCur: 0,
         mainCur: 0,
         verticalNavTop: 0,
+        load: true,
+
+        productViewList:[], // 各个产品目录的view 宽度、高度参数
+        productScrollTop:0, // 产品页面距离顶部scroll的高度
+
+        categoryIndex: 0,  // 当前选择的目录
+        itemIndex: 0, // 当前选择产品标志位
+        attIndex: 0, //属性标志位
+        valueIndex: 0,// 值标志位
     },
    
     created() {
@@ -16,8 +25,40 @@ module.exports = Behavior({
     },
     detached() {
         console.log("detached")
+
     },
+
+
+    // 监听器
+    observers: {
+        // 监听list， 生成产品菜单的高度信息
+        'list': function (list) {
+            // var productViewList = []
+            for (let i = 0; i < list.length; i++) {
+                let view = wx.createSelectorQuery().select("#main-" + list[i].id);
+                this.setData({ productViewList: [] })
+                view.fields({
+                    size: true
+                }, data => {
+                    if (data) {
+                        var productViewList = this.data.productViewList
+                        if (productViewList.length == 0)   
+                            data.top = 0
+                        else
+                            data.top = productViewList[productViewList.length - 1].top + productViewList[productViewList.length - 1].height
+                        productViewList.push(data)
+                        this.setData({ productViewList: productViewList })
+                    }
+                }).exec();
+            }
+        }
+
+    },
+    
     methods: {
+
+
+
         /**
          * @method list初始化
          */
@@ -36,7 +77,7 @@ module.exports = Behavior({
                 temp[i].id = i
 
             this.setData({
-                list: temp,
+                // list: temp,
                 showReLoad: showReLoad
             })
 
@@ -55,9 +96,12 @@ module.exports = Behavior({
             this.setData({ 
                 list: list, 
                 currentItem: currentItem,
-                showChoice:true,
             })
+
+
         },
+        
+
 
         /**
          * @method 更新产品已经点单总数量
@@ -87,10 +131,22 @@ module.exports = Behavior({
          * @method 点击category，滑动右侧product列表
          */
         TabSelect(e) {
+                        // var productViewList = this.data.productViewList 
+            // for (var i = 0; i < productViewList.length ; i++){
+            //     if()
+            //     if (top > productViewList[i].top && top < productViewList[i].height )    
+            //         this.setData({
+            //             tabCur: i,
+            //             mainCur: i,
+            //         })
+            // }
+
+            var index = e.currentTarget.dataset.id
             this.setData({
-                tabCur: e.currentTarget.dataset.id,
-                mainCur: e.currentTarget.dataset.id,
-                verticalNavTop: (e.currentTarget.dataset.id - 1) * 50
+                tabCur: index,
+                mainCur: index,
+                verticalNavTop: (index - 1) * 50,
+                productScrollTop: this.data.productViewList[index].top 
             })
         },
         /**
@@ -126,6 +182,25 @@ module.exports = Behavior({
                     return false
                 }
             }
+        },
+
+        /**
+         * @method  计算每个模块的距离
+         */
+        productMathTop(e){
+            // console.log(e.detail.scrollTop)
+            // var top = e.detail.scrollTop
+            // var productViewList = this.data.productViewList 
+            // for (var i = 0; i < productViewList.length ; i++){
+            //     if()
+            //     if (top > productViewList[i].top && top < productViewList[i].height )    
+            //         this.setData({
+            //             tabCur: i,
+            //             mainCur: i,
+            //         })
+            // }
+
+            // productViewList
         },
     },
 })

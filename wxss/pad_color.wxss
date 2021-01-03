@@ -1,3 +1,11 @@
+
+
+/* 垂直镜像翻转 */
+.pad .pg-mirror-vertical {
+    transform: rotateZ(180deg);   
+	transition-duration: 0.3s;
+}
+
 .pad .cu-list.menu-avatar > .cu-item .content > view:first-child {
 	font-size:15rpx;
 	display:flex;

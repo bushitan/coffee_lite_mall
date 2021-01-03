@@ -11,6 +11,9 @@ Page({
      * 页面的初始数据
      */
     data: {
+        spaceXXL: "60rpx",
+        spaceXL: "30rpx",
+
         SpaceBottom: 0,
         // CustomBar: app.globalData.CustomBar,
         CustomBar:40,
@@ -26,15 +29,10 @@ Page({
         load: true,
 
         showChoice: false, //展示详情
-        showOrder: false, // 展示账单
+        showOrder: !false, // 展示账单
         shopID: "",
-        categoryIndex: 0,  // 当前选择的目录
-        itemIndex: 0, // 当前选择产品标志位
-        attIndex: 0, //属性标志位
-        valueIndex: 0,// 值标志位
+        
 
-
-        isMirror: true,
     },
 
     behaviors: [app.configBehaviors, ProductsBehaviors, OrderBehaviors, ItemBehaviors, MirrorBehaviors],
@@ -61,6 +59,7 @@ Page({
 
         this.onInit()
         this.getStore()
+
     },
     async onInit() {
         this.productInit()
@@ -228,13 +227,6 @@ Page({
 
     },
 
-
-
-
-
-
-
-    switchMirror() { this.setData({ isMirror: !this.data.isMirror }) },
 
 
 

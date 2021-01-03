@@ -1,4 +1,5 @@
 // pages3/order/order.js
+var MirrorBehaviors = require('../../../behaviors/mirror.js') // 镜像控制
 var app = getApp()
 Page({
 
@@ -25,9 +26,13 @@ Page({
 
         showQR: false,
 
-        isMirror:false,
         machineModel:"phone",
-    }, 
+    },
+
+    behaviors: [app.configBehaviors,  MirrorBehaviors],
+
+
+    
     /**
      * 生命周期函数--监听页面加载
      */
@@ -56,9 +61,9 @@ Page({
             }
         })
         	
-        this.getStore()
+        // this.getStore()
         this.getOrder()
-        this.getOrderPrice()
+        // this.getOrderPrice()
     },
 
     
@@ -256,8 +261,6 @@ Page({
     openShowQR() { this.setData({ showQR: true, }) },
     closeShowQR() { this.setData({ showQR: false, }) },
 
-
-    switchMirror() { this.setData({ isMirror: !this.data.isMirror })},
 
  
     // 输入备注内容

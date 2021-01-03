@@ -9,7 +9,17 @@
 </view> -->
 
 
-<view class="{{machineModel}}">
+<page-meta 
+    background-color="#ffffff"
+    root-background-color="#ffffff"
+    background-color-top="#ffffff"
+    background-color-bottom="#ffffff"
+    root-font-size="20px"
+    page-orientation=""    
+    scroll-top="{{mirrorScroll}}"
+></page-meta>
+
+<view class="pad page theme-red">
     <view class="pg-space-xxl"></view>
 
     <view class="padding-xl {{isMirror?'pg-mirror-vertical':''}}">
@@ -22,7 +32,7 @@
         <view class="padding-tb text-xl">订单备注</view>
         <view class="solid-top  padding-tb flex align-center ">      
             <text class="cuIcon-write margin-right"></text> 
-            <input placeholder="请输入口味等" name="OrderNote" placeholder-class="text-xl" class="text-xl basis-xl text-yellow " bindinput="inputOrderNote"></input>
+            <input placeholder="请输入口味等" name="OrderNote" placeholder-class="text-xl" class="text-xl basis-xl theme-text " bindinput="inputOrderNote"></input>
         </view>
         
         <view class="padding-tb text-xl margin-top">商品信息</view>
@@ -67,15 +77,18 @@
     </view>
 
     <view class="flex justify-between align-center bg-white padding-xl solid-top" style="position: fixed; bottom:0; left: 0; right: 0;">
-        <view class="  {{machineModel=='pad'?'text-xl':''}}">
+        <view class="  text-xl">
             <text class="text-black"> 订单金额：</text>
-            <text class="text-price text-red text-bold {{machineModel=='pad'?'text-sl':''}}"></text>
-            <text class="text-red  {{machineModel=='pad'?'text-sl':''}} text-bold">{{preOrder.order_total || ""}}</text>
+            <text class="text-price text-red text-bold text-sl"></text>
+            <text class="text-red text-sl text-bold">{{preOrder.order_total || ""}}</text>
         </view>
             
         <view class=""   >
-            <button class='cu-btn margin-right-sm  lg' catchtap="switchMirror"  wx:if="{{machineModel=='pad'}}">反转</button>	
-            <button class="cu-btn text-gray  margin-right  {{machineModel=='pad'?'lg':''}} " catchtap="switchPayMethod">
+
+        
+            <navigator class='cu-btn margin-right-sm radius lg' open-type="navigateBack" >返回</navigator>
+            <button class='cu-btn margin-right-sm  lg' catchtap="switchMirror"   >反转</button>	
+            <button class="cu-btn text-gray  margin-right  lg" catchtap="switchPayMethod">
                 <!-- <text >支付方式：</text> -->
                 <text class="text-yellow text-bold">
                     <text wx:if="{{PayMethod == 0 }}">微信支付</text>
@@ -88,7 +101,7 @@
                 <text class="margin-left-xs">[切换]</text>
                 
             </button>
-            <button class="cu-btn bg-yellow text-white shadow shadow-blur {{machineModel=='pad'?'lg':''}} " catchtap="genOrder" >下单</button>	
+            <button class="cu-btn bg-yellow text-white shadow shadow-blur lg" catchtap="genOrder" >下单</button>	
                 <!-- disabled="{{noPowerPay}}" -->
         </view>
     </view>
@@ -126,8 +139,8 @@
 
     <view class="pg-space-xxl"></view>
     <view class="pg-space-xxl"></view>
-</view>
 
+</view>
 
 
 

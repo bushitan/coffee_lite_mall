@@ -84,14 +84,8 @@ Page({
                 add: "/images/icon/add.png", //增加按钮
                 cut: "/images/icon/cut.png", //增加按钮
             },
-            // 主题色彩配置
-            color: {
-                text: "", //文字颜色
-                bg: "", //背景颜色
-                page: "",
-                textMain: 'text-red',
-                bgMain: 'bg-green'
-            },
+            // 主题色彩配置 -- 默认黄色
+            theme:"theme-red",
             // 窗口配置
             window: {
                 "navigationBarBackgroundColor": "#efaf30",

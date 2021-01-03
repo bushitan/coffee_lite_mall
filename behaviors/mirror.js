@@ -2,34 +2,41 @@
 var app
 module.exports = Behavior({
     data: {
-        isMirror: true, // 全局配置
+        isMirror:true, // 全局配置
+        mirrorScroll: 10000,
     },
 
 
 
-    // // 监听器
-    // observers: {
-    //     // 全局生成config配置参数
-    //     'configBase': function (config) {
-    //         console.log(config)
-    //         // TODO 检查配置文件是否完整，不完整，在这里补充
-    //         this.setData({
-    //             config: config
-    //         })
+    // 监听器
+    observers: {
+        // 全局生成config配置参数
+        'isMirror': function (isMirror) {
+            console.log(isMirror)
+            if(isMirror){
+                this.setData({mirrorScroll : 10000})
+            } else {
+                this.setData({ mirrorScroll: 0 })
+            }
+            // TODO 检查配置文件是否完整，不完整，在这里补充
+            // this.setData({
+            //     config: config
+            // })
 
-    //     }
+        }
 
-    // },
+    },
 
-    // //准备完成
-    // ready() {
-    //     app = getApp()
-    //     console.log(1)
-    //     this.setData({
-    //         configBase: app.configBase,
-    //     })
-    //     this.initConfig()
-    // },
+    //准备完成
+    ready() {
+        // app = getApp()
+        // console.log(1)
+        // this.setData({
+        //     configBase: app.configBase,
+        // })
+        // this.initConfig()
+        
+    },
     methods: {
 
 

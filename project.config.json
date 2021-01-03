@@ -76,9 +76,9 @@
 			"list": [
 				{
 					"id": 0,
-					"name": "pages/menu/menu shopID=97",
+					"name": "pages/menu/menu shopID=15",
 					"pathName": "pages/menu/menu",
-					"query": "shopID=97",
+					"query": "shopID=15",
 					"scene": null
 				},
 				{
@@ -148,7 +148,7 @@
 					"id": 10,
 					"name": "pages/pad/menu/menu",
 					"pathName": "pages/pad/menu/menu",
-					"query": "shopID=87",
+					"query": "shopID=15",
 					"scene": null
 				},
 				{
