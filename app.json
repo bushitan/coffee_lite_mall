@@ -5,6 +5,7 @@
         "pages/menu/menu",
         "pages/menu_pad/menu_pad",
         "pages/pad/menu/menu",
+        "pages/pad/order/order",
         "pages/order/order",
         "pages/index/index",
         "pages/logs/logs",

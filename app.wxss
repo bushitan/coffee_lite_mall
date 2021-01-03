@@ -2,6 +2,7 @@
 @import 'static/css/main.wxss';
 @import 'static/css/icon.wxss';
 
+@import '/static/css/pad_color.wxss';
 page {
     /* height: 100%; */
     width: 100%;
@@ -49,4 +50,10 @@ page {
     font-family: "cuIcon";
     line-height: 19rpx
     
+}
+
+
+.pg-mirror-vertical {
+    transform: rotateZ(180deg);   /* 垂直镜像翻转 */
+	transition-duration: 0.3s;
 }

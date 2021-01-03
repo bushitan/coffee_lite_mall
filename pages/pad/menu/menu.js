@@ -3,6 +3,7 @@
 var ProductsBehaviors = require('../../../behaviors/sku/products.js')
 var OrderBehaviors = require('../../../behaviors/sku/order.js')
 var ItemBehaviors = require('../../../behaviors/sku/item.js')
+var MirrorBehaviors = require('../../../behaviors/mirror.js') // 镜像控制
 var app = getApp()
 Page({
 
@@ -31,9 +32,12 @@ Page({
         itemIndex: 0, // 当前选择产品标志位
         attIndex: 0, //属性标志位
         valueIndex: 0,// 值标志位
+
+
+        isMirror: true,
     },
 
-    behaviors: [app.configBehaviors,ProductsBehaviors, OrderBehaviors, ItemBehaviors],
+    behaviors: [app.configBehaviors, ProductsBehaviors, OrderBehaviors, ItemBehaviors, MirrorBehaviors],
 
 
 
@@ -47,6 +51,14 @@ Page({
         this.setData({
             shopID: options.shopID || ""
         })
+
+
+        // this.setData({
+        //     list: wx.getStorageSync("menu_test")
+        // })
+        // return
+        this.getTest()
+
         this.onInit()
         this.getStore()
     },
@@ -55,9 +67,12 @@ Page({
     },   
     // 获取门店信息
     async getStore() {
+
         var res = await app.db.product.productGetStoreInfo({
             ShopId: this.data.shopID
         })
+
+
         this.setData({
             store: res.data
         })
@@ -196,7 +211,7 @@ Page({
     /******路由******/
     toPay() {
         wx.navigateTo({
-            url: "/pages/order/order?shopID=" + this.data.shopID
+            url: "/pages/pad/order/order?shopID=" + this.data.shopID
         })
     },
 
@@ -211,7 +226,7 @@ Page({
      */
     onShareAppMessage: function () {
 
-    }
+    },
 
 
 
@@ -219,6 +234,7 @@ Page({
 
 
 
+    switchMirror() { this.setData({ isMirror: !this.data.isMirror }) },
 
 
 

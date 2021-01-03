@@ -1,10 +1,13 @@
 /* pages3/menu/menu.wxss */
 
 
+/* @import '/static/css/pad_color.wxss'; */
 
 
 
-
+page{
+    background-color: #ffffff;
+}
 
 .col{
   width: 200rpx;
@@ -17,53 +20,35 @@
     color:aqua;
 }
 
-.text-xs {
-	font-size: 10rpx;
+.mask_bg{
+    background: rgba(255,255,255, 0.6);
 }
 
-.text-sm {
-	font-size: 12rpx;
+.menu-dialog {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: auto;
+	margin-right: auto;
+	width: 680rpx;
+	max-width: 100%;
+	/* background-color: #f8f8f8; */
+    background: rgba(255,255,255, 0.9);
+	/* border-radius: 10rpx; */
+	overflow: hidden;
 }
 
-.text-df {
-	font-size: 14rpx;
+.mask{
+    background-color: rgba(255,255,255,0.8);
+    transform:translateZ(5px); 
 }
 
-.text-lg {
-	font-size: 16rpx;
-}
 
-.text-xl {
-	font-size: 18rpx;
-}
 
-.text-xxl {
-	font-size: 22rpx;
-}
 
-.text-sl {
-	font-size: 40rpx;
-}
 
-.text-xsl {
-	font-size: 60rpx;
-}
 
-.cu-btn{
-	height: 32rpx;
-    padding: 0 15rpx;
-}
-.cu-btn.sm {
-	padding: 0 10rpx;
-	font-size: 10rpx;
-	height: 24rpx;
-}
 
-.cu-btn.lg {
-	padding: 0 20rpx;
-	font-size: 16rpx;
-	height: 40rpx;
-}
 
 
 
@@ -89,9 +74,6 @@
     text-overflow: ellipsis;
 }
 
-.mask{
-    background-color: rgba(255,255,255,0.8);
-}
 
 .screen-swiper , .screen-swiper swiper-item,.screen-swiper image{
 		
@@ -169,6 +151,6 @@
     display: -webkit-box;
     display: box;
 
-    line-height:30rpx;
-    min-height:60rpx;
+    line-height:20rpx;
+    min-height:40rpx;
 }

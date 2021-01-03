@@ -41,7 +41,7 @@ App({
         // }
 
         wx.getSystemInfo().then( res =>{
-            console.log(res.fontSizeSetting)
+            console.log(res.windowHeight)
         })
         // wx.getSystemInfo({ success(res) { console.log(res) } })
         

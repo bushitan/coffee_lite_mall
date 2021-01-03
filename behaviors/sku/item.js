@@ -45,7 +45,11 @@ module.exports = Behavior({
                 }
             }
             this.setData({ currentItem: currentItem})
+
+            wx.setStorageSync("item_test",currentItem)
         },
+
+        
         /**
          * @method 点击sku
          */
