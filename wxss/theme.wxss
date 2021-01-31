@@ -28,3 +28,10 @@
 .theme-pink .theme-lines::after { border-color: var(--pink); }
 .theme-pink .theme-line,
 .theme-pink .theme-lines { color: var(--pink); }
+
+.theme-olive .theme-text{ color: var(--olive); }
+.theme-olive .theme-bg{ background-color: var(--olive); }
+.theme-olive .theme-line::after,
+.theme-olive .theme-lines::after { border-color: var(--olive); }
+.theme-olive .theme-line,
+.theme-olive .theme-lines { color: var(--olive); }

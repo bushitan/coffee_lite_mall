@@ -46,7 +46,7 @@ module.exports = {
     
             <view style="margin-top:80px"></view>
             <view class="padding" wx:for="{{list}}"   wx:for-item="category" wx:for-index='index' id="main-{{index}}">
-                <view class="cuIcon-titles theme-text"> {{category.category.cate_name}}</view> 
+                <view class="cuIcon-titles theme-text text-xxl"> {{category.category.cate_name}}</view> 
                     
                 <view class="margin-top flex justify-start"  style=" flex-wrap:wrap;" >
                     <view class="  padding-xs radius " style="flex-basis: 25%;"
